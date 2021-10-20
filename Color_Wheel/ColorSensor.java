@@ -14,7 +14,7 @@ public class ColorSensor {
   final Color detectedColor = Map.ColorWheel.sensor.getColor();
   private static double maxColorError = 0.1;
 
-  private static boolean isColor(Calibrate.Color1 original, Calibrate.Color1 color){
+  private static boolean isColor(Calibrate.Color1 color, Calibrate.Color1 original){
     double RabsError = Math.abs(original.r - color.r);
     double GabsError = Math.abs(original.g - color.g);
     double BabsError = Math.abs(original.b - color.b);
@@ -26,7 +26,7 @@ public class ColorSensor {
     }
   }
   
-  public static void getColor(){
+  public static String getColor(){
     Color precolor = Map.ColorWheel.sensor.getColor();
     Calibrate.Color1 color = new Calibrate.Color1();
     color.r=precolor.red;
@@ -60,6 +60,7 @@ public class ColorSensor {
 
     }
     SmartDashboard.putString("Color Detected:", current_color);
+    return current_color;
   }
 }
 
